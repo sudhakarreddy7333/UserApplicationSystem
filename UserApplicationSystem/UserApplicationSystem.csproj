@@ -142,7 +142,16 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="BusinessModels\ApplicantModel.cs" />
+    <Compile Include="BusinessModels\ConstantsModel.cs" />
+    <Compile Include="BusinessModels\RelationsModel.cs" />
+    <Compile Include="BusinessModels\UserFamilyModel.cs" />
+    <Compile Include="BusinessModels\UserModel.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\SignupController.cs" />
+    <Compile Include="Filters\ActionSessionStateAttribute.cs" />
+    <Compile Include="Filters\CustomControllerFactory.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -160,6 +169,8 @@
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <None Include="Properties\PublishProfiles\CustomProfile.pubxml" />
+    <None Include="Properties\PublishProfiles\CustomProfile1.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -182,12 +193,16 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\About.cshtml" />
-    <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Signup\Index.cshtml" />
+    <Content Include="Views\Login\Index.cshtml" />
+    <Content Include="Views\Home\CreateApplication.cshtml" />
+    <Content Include="Views\Home\Relationships.cshtml" />
+    <Content Include="Views\Home\GetOtherMembers.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="BuildOutput\" />
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>

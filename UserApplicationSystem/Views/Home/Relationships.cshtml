@@ -1,0 +1,31 @@
+﻿@model UserApplicationSystem.BusinessModels.RelationsModel
+
+@{
+    ViewBag.Title = "Relationships";
+}
+
+<h2>Household Relationships</h2>
+<h4>Please tell us how the members of your household are related to each other</h4>
+
+@{
+<ul class="nav nav-tabs">
+
+    @foreach (var item in Model.MembersRelations)
+    {
+        <li role="presentation" id="@item.MemberId"> <a onclick="getData(this)" id="TabClick" data-member="@item.MemberId" data-target="#@item.MemberId">@item.FirstName</a> </li>
+    }
+
+</ul>
+    <div id="RelationsForm">
+       
+    </div>
+}
+
+<script>
+    var url = '@Url.Action("GetOtherMembers", "home")';
+    function getData(data) {
+        var data = $(data).data('member');
+        console.log(data);
+        $('#RelationsForm').load(url, { memberId: data });
+    }
+</script>
