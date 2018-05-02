@@ -1,0 +1,218 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="UAS_SystemModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="UAS_Applicants">
+          <Key>
+            <PropertyRef Name="AplicantId" />
+          </Key>
+          <Property Name="AplicantId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="int" />
+          <Property Name="AppStatus" Type="varchar" MaxLength="10" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UAS_Household_Members">
+          <Key>
+            <PropertyRef Name="HId" />
+          </Key>
+          <Property Name="HId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="int" />
+          <Property Name="FirstName" Type="varchar" MaxLength="256" Nullable="false" />
+          <Property Name="LastName" Type="varchar" MaxLength="256" Nullable="false" />
+          <Property Name="MiddleName" Type="varchar" MaxLength="256" Nullable="false" />
+          <Property Name="Suffix" Type="char" MaxLength="10" Nullable="false" />
+          <Property Name="Gender" Type="char" MaxLength="10" Nullable="false" />
+          <Property Name="Dob" Type="date" Nullable="false" />
+          <Property Name="Relation" Type="char" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UAS_User_Details">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserName" Type="varchar" MaxLength="256" Nullable="false" />
+          <Property Name="Email" Type="varchar" MaxLength="256" Nullable="false" />
+          <Property Name="Upassword" Type="varchar" MaxLength="256" Nullable="false" />
+          <Property Name="UserType" Type="char" MaxLength="10" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_UserAppId">
+          <End Role="UAS_User_Details" Type="Self.UAS_User_Details" Multiplicity="0..1" />
+          <End Role="UAS_Household_Members" Type="Self.UAS_Household_Members" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UAS_User_Details">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="UAS_Household_Members">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserId">
+          <End Role="UAS_User_Details" Type="Self.UAS_User_Details" Multiplicity="0..1" />
+          <End Role="UAS_Applicants" Type="Self.UAS_Applicants" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UAS_User_Details">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="UAS_Applicants">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="UAS_SystemModelStoreContainer">
+          <EntitySet Name="UAS_Applicants" EntityType="Self.UAS_Applicants" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UAS_Household_Members" EntityType="Self.UAS_Household_Members" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UAS_User_Details" EntityType="Self.UAS_User_Details" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_UserAppId" Association="Self.FK_UserAppId">
+            <End Role="UAS_User_Details" EntitySet="UAS_User_Details" />
+            <End Role="UAS_Household_Members" EntitySet="UAS_Household_Members" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserId" Association="Self.FK_UserId">
+            <End Role="UAS_User_Details" EntitySet="UAS_User_Details" />
+            <End Role="UAS_Applicants" EntitySet="UAS_Applicants" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="UAS_SystemModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="UAS_Applicants">
+          <Key>
+            <PropertyRef Name="AplicantId" />
+          </Key>
+          <Property Name="AplicantId" Type="Int32" Nullable="false" />
+          <Property Name="UserId" Type="Int32" />
+          <Property Name="AppStatus" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="UAS_User_Details" Relationship="Self.FK_UserId" FromRole="UAS_Applicants" ToRole="UAS_User_Details" />
+        </EntityType>
+        <EntityType Name="UAS_Household_Members">
+          <Key>
+            <PropertyRef Name="HId" />
+          </Key>
+          <Property Name="HId" Type="Int32" Nullable="false" />
+          <Property Name="UserId" Type="Int32" />
+          <Property Name="FirstName" Type="String" MaxLength="256" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="LastName" Type="String" MaxLength="256" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="MiddleName" Type="String" MaxLength="256" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Suffix" Type="String" MaxLength="10" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="Gender" Type="String" MaxLength="10" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="Dob" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Relation" Type="String" MaxLength="20" FixedLength="true" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="UAS_User_Details" Relationship="Self.FK_UserAppId" FromRole="UAS_Household_Members" ToRole="UAS_User_Details" />
+        </EntityType>
+        <EntityType Name="UAS_User_Details">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="UserName" Type="String" MaxLength="256" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="256" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Upassword" Type="String" MaxLength="256" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="UserType" Type="String" MaxLength="10" FixedLength="true" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="UAS_Applicants" Relationship="Self.FK_UserId" FromRole="UAS_User_Details" ToRole="UAS_Applicants" />
+          <NavigationProperty Name="UAS_Household_Members" Relationship="Self.FK_UserAppId" FromRole="UAS_User_Details" ToRole="UAS_Household_Members" />
+        </EntityType>
+        <Association Name="FK_UserId">
+          <End Role="UAS_User_Details" Type="Self.UAS_User_Details" Multiplicity="0..1" />
+          <End Role="UAS_Applicants" Type="Self.UAS_Applicants" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UAS_User_Details">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="UAS_Applicants">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserAppId">
+          <End Role="UAS_User_Details" Type="Self.UAS_User_Details" Multiplicity="0..1" />
+          <End Role="UAS_Household_Members" Type="Self.UAS_Household_Members" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UAS_User_Details">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="UAS_Household_Members">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="UAS_SystemEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="UAS_Applicants" EntityType="Self.UAS_Applicants" />
+          <EntitySet Name="UAS_Household_Members" EntityType="Self.UAS_Household_Members" />
+          <EntitySet Name="UAS_User_Details" EntityType="Self.UAS_User_Details" />
+          <AssociationSet Name="FK_UserId" Association="Self.FK_UserId">
+            <End Role="UAS_User_Details" EntitySet="UAS_User_Details" />
+            <End Role="UAS_Applicants" EntitySet="UAS_Applicants" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserAppId" Association="Self.FK_UserAppId">
+            <End Role="UAS_User_Details" EntitySet="UAS_User_Details" />
+            <End Role="UAS_Household_Members" EntitySet="UAS_Household_Members" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="UAS_SystemModelStoreContainer" CdmEntityContainer="UAS_SystemEntities">
+          <EntitySetMapping Name="UAS_Applicants">
+            <EntityTypeMapping TypeName="UAS_SystemModel.UAS_Applicants">
+              <MappingFragment StoreEntitySet="UAS_Applicants">
+                <ScalarProperty Name="AplicantId" ColumnName="AplicantId" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="AppStatus" ColumnName="AppStatus" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UAS_Household_Members">
+            <EntityTypeMapping TypeName="UAS_SystemModel.UAS_Household_Members">
+              <MappingFragment StoreEntitySet="UAS_Household_Members">
+                <ScalarProperty Name="HId" ColumnName="HId" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
+                <ScalarProperty Name="Suffix" ColumnName="Suffix" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="Dob" ColumnName="Dob" />
+                <ScalarProperty Name="Relation" ColumnName="Relation" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UAS_User_Details">
+            <EntityTypeMapping TypeName="UAS_SystemModel.UAS_User_Details">
+              <MappingFragment StoreEntitySet="UAS_User_Details">
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Upassword" ColumnName="Upassword" />
+                <ScalarProperty Name="UserType" ColumnName="UserType" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

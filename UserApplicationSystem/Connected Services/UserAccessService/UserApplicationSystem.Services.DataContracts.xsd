@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/UserApplicationSystem.Services.DataContracts" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/UserApplicationSystem.Services.DataContracts" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:complexType name="UserAccessData">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Email" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Password" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UserName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UserType" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="UserAccessData" nillable="true" type="tns:UserAccessData" />
+  <xs:complexType name="ResponseMessageDataOfUserAccessDatajbgNRuBV">
+    <xs:annotation>
+      <xs:appinfo>
+        <GenericType Name="ResponseMessageDataOf{0}{#}" Namespace="http://schemas.datacontract.org/2004/07/UserApplicationSystem.Services.DataContracts" xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
+          <GenericParameter Name="UserAccessData" Namespace="http://schemas.datacontract.org/2004/07/UserApplicationSystem.Services.DataContracts" />
+        </GenericType>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Data" nillable="true" type="tns:UserAccessData" />
+      <xs:element minOccurs="0" name="Message" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ResponseMessageDataOfUserAccessDatajbgNRuBV" nillable="true" type="tns:ResponseMessageDataOfUserAccessDatajbgNRuBV" />
+</xs:schema>

@@ -20,7 +20,7 @@ namespace UserApplicationSystem.Filters
             }
             var actionName = requestContext.RouteData.Values["action"].ToString();
             MethodInfo actionMethodInfo;
-            actionMethodInfo = controllerType.GetMethod(actionName, BindingFlags.IgnoreCase | BindingFlags.Public | BindingFlags.Instance);
+            actionMethodInfo = controllerType.GetMethod(actionName, BindingFlags.IgnoreCase);
             if (actionMethodInfo != null)
             {
                 var actionSessionStateAttr = actionMethodInfo

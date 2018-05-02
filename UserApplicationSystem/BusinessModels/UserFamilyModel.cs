@@ -1,12 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Web.Mvc;
 
 namespace UserApplicationSystem.BusinessModels
 {
     public class UserFamilyModel
     {
-            public String FirstName { get; set; }
+        [StringLength(50, MinimumLength = 10, ErrorMessage = ConstantsModel.UsernameMinLengthError)]
+        public String FirstName { get; set; }
             public String LastName { get; set; }
             public String MiddleName { get; set; }
             public String Suffix { get; set; }

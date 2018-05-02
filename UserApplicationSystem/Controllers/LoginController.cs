@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using UserApplicationSystem.BusinessModels;
+using UserApplicationSystem.UserAccessService;
 
 namespace UserApplicationSystem.Controllers
 {
@@ -20,25 +21,21 @@ namespace UserApplicationSystem.Controllers
         {
             if (ModelState.IsValid)
             {
-                //if (AuthenticateUser(loginDetails))
-                //{
-                //    return RedirectToAction("index","home");
-                //}
-                //else
-                //{
-                //    loginDetails.LoginStatus = "Incorrect username or password entered";
-                //    return RedirectToAction("index","login");
-                //}
-                return RedirectToAction("index", "home");
+                UserAccessService.UserAccessServiceClient client = new UserAccessService.UserAccessServiceClient();
+                UserAccessData loginData = new UserAccessData();
+                loginData.UserName = loginDetails.UserName;
+                loginData.Password = loginDetails.Password;
+                if(client.AuthenticateUser(loginData).Message == "Success")
+                {
+                    return RedirectToAction("index", "home");
+                }
+                else return RedirectToAction("index", "login");
+
+
             }
             else
                 return RedirectToAction("index", "login");
 
-        }
-        public bool AuthenticateUser(LoginUserModel loginDetails)
-        {
-            if (loginDetails.UserName == "raju" && loginDetails.Password == "raju") return true;
-            else return false;
         }
     }
 }
