@@ -11,7 +11,6 @@ namespace UserApplicationSystem.Controllers
 {
     public class SignupController : Controller
     {
-        // GET: Signup
         [HttpGet]
         public ActionResult Index()
         {
@@ -22,17 +21,17 @@ namespace UserApplicationSystem.Controllers
         {
             if (ModelState.IsValid)
             {
-                UserAccessData data = new UserAccessData();
-                UserAccessService.UserAccessServiceClient client = new UserAccessService.UserAccessServiceClient();
-                data.UserName = user.UserName;
-                data.Password = user.Password;
-                data.UserType = "User";
-                data.Email = user.Email;
-                if (client.GetSignupInfo(data).Message == "Success") {
+                UserAccessServiceClient client = new UserAccessServiceClient();
+                var response = client.GetSignupInfo(new UserAccessData() {
+                    UserName = user.UserName,
+                    Password = user.Password,
+                    UserType = "User".Trim(),
+                    Email = user.Email
+                });
+                if (response.Message == ConstantsModel.SuccessMessage) {
                     return RedirectToAction("index", "login");
                 }
                 else return RedirectToAction("Signup");
-
             }
             else
                 return RedirectToAction("Signup");

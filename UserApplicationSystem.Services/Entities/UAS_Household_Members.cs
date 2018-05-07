@@ -14,6 +14,12 @@ namespace UserApplicationSystem.Services.Entities
     
     public partial class UAS_Household_Members
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public UAS_Household_Members()
+        {
+            this.UAS_Family_Relations = new HashSet<UAS_Family_Relations>();
+        }
+    
         public int HId { get; set; }
         public Nullable<int> UserId { get; set; }
         public string FirstName { get; set; }
@@ -25,5 +31,7 @@ namespace UserApplicationSystem.Services.Entities
         public string Relation { get; set; }
     
         public virtual UAS_User_Details UAS_User_Details { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<UAS_Family_Relations> UAS_Family_Relations { get; set; }
     }
 }

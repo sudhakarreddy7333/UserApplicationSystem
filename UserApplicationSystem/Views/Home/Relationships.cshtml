@@ -1,4 +1,4 @@
-﻿@model UserApplicationSystem.BusinessModels.RelationsModel
+﻿@model IEnumerable<UserApplicationSystem.BusinessModels.UserFamilyModel>
 
 @{
     ViewBag.Title = "Relationships";
@@ -10,9 +10,9 @@
 @{
 <ul class="nav nav-tabs">
 
-    @foreach (var item in Model.MembersRelations)
+    @foreach (var item in Model)
     {
-        <li role="presentation" id="@item.MemberId"> <a onclick="getData(this)" id="TabClick" data-member="@item.MemberId" data-target="#@item.MemberId">@item.FirstName</a> </li>
+        <li role="presentation" id="@item.MemberId"> <a onclick="getData(this)" id="TabClick" data-memberName="@item.FirstName" data-member="@item.MemberId" data-target="#@item.MemberId">@item.FirstName</a> </li>
     }
 
 </ul>
@@ -23,9 +23,11 @@
 
 <script>
     var url = '@Url.Action("GetOtherMembers", "home")';
+    
     function getData(data) {
         var data = $(data).data('member');
+        var userName = $(data).data('memberName');
         console.log(data);
-        $('#RelationsForm').load(url, { memberId: data });
+        $('#RelationsForm').load(url, { memberId: data});
     }
 </script>

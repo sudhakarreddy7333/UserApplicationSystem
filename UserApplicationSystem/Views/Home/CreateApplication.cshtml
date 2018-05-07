@@ -8,7 +8,7 @@
 <span class="pull-right mandatory">* Required fields</span>
 
 
-@using (Html.BeginForm()) 
+@using (Html.BeginForm("CreateApplication", "Home", null, FormMethod.Post)) 
 {
     @Html.AntiForgeryToken()
     
@@ -18,7 +18,7 @@
 
     <div class="col-lg-12 form-group">
         <div class="form-group col-lg-2">
-            @Html.LabelFor(model => model.FirstName, htmlAttributes: new { @class = "control-label" })
+            @Html.LabelFor(model => model.FirstName, "Firstname", htmlAttributes: new { @class = "control-label" })
             <span class="mandatory">*</span>
             <div>
                 @Html.EditorFor(model => model.FirstName, new { htmlAttributes = new { @class = "form-control" } })
@@ -47,7 +47,7 @@
             @Html.LabelFor(model => model.Suffix, "Suffix", htmlAttributes: new { @class = "control-label" })
             <div>
                 @Html.RadioButtonFor(model => model.Suffix, "Mr") Mr
-                @Html.RadioButtonFor(model => model.Suffix, "Mrs") Ms
+                @Html.RadioButtonFor(model => model.Suffix, "Mrs") Ms <br />
             </div>
         </div>
     </div>
@@ -84,14 +84,14 @@
 
     <div class="form-group">
         <div class="col-md-offset-2 col-md-10">
-            <input type="submit" value="Add Member" class="btn btn-success pull-right" />
+            <input name="submit" id="AddMemberBtn" type="submit" value="Add Member" class="btn btn-success pull-right" />
         </div>
     </div>
     <div>
-        <input type="button" value="Save and Exit" class="btn btn-success" />
+        <input name="submit" id="SaveAndExitBtn" type="submit" value="Save and Exit" class="btn btn-success" />
         <div class="pull-right">
-            <input type="button" value="Back" class="btn btn-success" />
-            <input type="button" value="Next" class="btn btn-success" />
+            @Html.ActionLink("Back","Index","Home", new { @class = "btn btn-success" })
+            <input name="submit" id="NextBtn" type="submit" value="Next" class="btn btn-success" />
         </div>
     </div>
 </div>
@@ -102,4 +102,5 @@
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
 }
+
 

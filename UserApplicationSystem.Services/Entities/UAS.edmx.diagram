@@ -10,6 +10,8 @@
         <EntityTypeShape EntityType="UAS_SystemModel.UAS_User_Details" Width="1.5" PointX="0.75" PointY="2.625" IsExpanded="true" />
         <AssociationConnector Association="UAS_SystemModel.FK_UserId" ManuallyRouted="false" />
         <AssociationConnector Association="UAS_SystemModel.FK_UserAppId" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="UAS_SystemModel.UAS_Family_Relations" Width="2" PointX="5.25" PointY="4.125" />
+        <AssociationConnector Association="UAS_SystemModel.FK_MemberId" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

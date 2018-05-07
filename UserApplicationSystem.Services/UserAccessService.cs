@@ -14,18 +14,18 @@ namespace UserApplicationSystem.Services
     // NOTE: You can use the "Rename" command on the "Refactor" menu to change the class name "Service1" in both code and config file together.
     public class UserAccessService : IUserAccessService
     {
-        IUserAccessRepository userRepo = new UserAccessRepository();
+        UserAccessRepository userRepo = new UserAccessRepository();
         ResponseMessageData<UserAccessData> response = new ResponseMessageData<UserAccessData>();
         public ResponseMessageData<UserAccessData> AuthenticateUser(UserAccessData loginInfo)
         {
             if(loginInfo != null)
             {
-                String result = userRepo.UserLogin(loginInfo);
-                if(result == "UserFound")
+                UserAccessData result = userRepo.UserLogin(loginInfo);
+                if(result != null)
                 {
                     response = new ResponseMessageData<UserAccessData>()
                     {
-                        Data = null,
+                        Data = result,
                         Message = "Success"
                     };
                 }
@@ -37,7 +37,6 @@ namespace UserApplicationSystem.Services
                         Message = "NoUserFound"
                     };
                 }
-                
                 return response;
             }
             else
@@ -50,6 +49,7 @@ namespace UserApplicationSystem.Services
                 return response;
             }
         }
+
         public ResponseMessageData<UserAccessData> GetSignupInfo(UserAccessData signupInfo)
         {
             if(signupInfo != null)

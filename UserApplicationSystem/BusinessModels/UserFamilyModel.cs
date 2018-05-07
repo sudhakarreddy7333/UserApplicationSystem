@@ -7,17 +7,32 @@ namespace UserApplicationSystem.BusinessModels
 {
     public class UserFamilyModel
     {
-        [StringLength(50, MinimumLength = 10, ErrorMessage = ConstantsModel.UsernameMinLengthError)]
+        [Required]
+        [StringLength(32,ErrorMessage ="Firstname cannot be more than 32 characters")]
         public String FirstName { get; set; }
-            public String LastName { get; set; }
-            public String MiddleName { get; set; }
-            public String Suffix { get; set; }
-            public String Email { get; set; }
-            public String Gender { get; set; }
-            public DateTime Dob { get; set; }
-            public string Relation { get; set; }
-            public int UserId { get; set; }
-            public int MemberId { get; set; }
-            public int RelationWithMemberId { get; set; }
+
+        [Required]
+        [StringLength(32, ErrorMessage = "lastname cannot be more than 32 characters")]
+        public String LastName { get; set; }
+
+        [StringLength(32, ErrorMessage = "Middle cannot be more than 32 characters")]
+        public String MiddleName { get; set; }
+
+        public String Suffix { get; set; }
+
+        [EmailAddress(ErrorMessage ="Please enter a valid Email address")]
+        public String Email { get; set; }
+
+        [Required]
+        public String Gender { get; set; }
+
+        [Required]
+        public DateTime Dob { get; set; }
+
+        public int UserId { get; set; }
+
+        public int MemberId { get; set; }
+
+        public List<RelationsModel> RelationsList { get; set; }
     }
 }

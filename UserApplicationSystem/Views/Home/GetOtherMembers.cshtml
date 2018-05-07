@@ -1,23 +1,34 @@
-﻿@model UserApplicationSystem.BusinessModels.RelationsModel
+﻿@model UserApplicationSystem.BusinessModels.UserFamilyModel
 
 
 @using (Html.BeginForm("MemberRelations", "Home", null, FormMethod.Post))
 {
     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-    @Html.Label(Model.UserName)<label>'s Relationship</label>
-    @Html.Hidden("UserName", Model.UserName)
-    for (var i = 0; i < Model.MembersRelations.Count(); i++)
+    @Html.Label(Model.FirstName)<label>'s Relationship</label>
+    @Html.HiddenFor(model => model.FirstName);
+    @Html.HiddenFor(model => model.MemberId);
+    @Html.HiddenFor(model => model.Gender);
+    @Html.HiddenFor(model => model.LastName);
+    @Html.HiddenFor(model => model.MiddleName);
+    @Html.HiddenFor(model => model.Dob);
+    @Html.HiddenFor(model => model.Suffix);
+    @Html.HiddenFor(model => model.Email);
+    for (var i = 0; i < Model.RelationsList.Count(); i++)
     {
         <div class="form-group">
-            @Html.Label("Relationship with "+Model.MembersRelations[i].FirstName, new { @class = "control-label col-lg-5" })
-                @Html.DropDownListFor(model => model.MembersRelations[i].Relation, new List<SelectListItem>(){
-                    new SelectListItem { Text = "Father", Value = "Father" },
-                    new SelectListItem { Text = "Mother", Value = "Mother" },
-                    new SelectListItem { Text = "Daughter", Value = "Daughter" },
-                    new SelectListItem { Text = "Son", Value = "Son" } }, "Select Relation")
+            @Html.LabelFor(model => Model.RelationsList[i].RelativeName, "Relationship with " + Model.RelationsList[i].RelativeName, new { @class = "control-label col-lg-5" })
+            @Html.DropDownListFor(model => Model.RelationsList[i].RelationType, new List<SelectListItem>(){
+new SelectListItem { Text = "Father", Value = "Father" },
+new SelectListItem { Text = "Mother", Value = "Mother" },
+new SelectListItem { Text = "Daughter", Value = "Daughter" },
+new SelectListItem { Text = "Son", Value = "Son" } }, "Select Relation", new { required = "required" })
         </div>
-        @Html.HiddenFor(model => model.MembersRelations[i].MemberId)
-        @Html.HiddenFor(model => model.MembersRelations[i].RelationWithMemberId)
+        <div>
+            @Html.ValidationMessageFor(model => model.RelationsList[i].RelativeName, "", new { @class = "text-danger" })
+        </div>
+        @Html.HiddenFor(model => model.RelationsList[i].RelativeId);
+        @Html.HiddenFor(model => model.RelationsList[i].RelationType);
+        @Html.HiddenFor(model => model.RelationsList[i].RelativeName);
     }
 
     <div class="row">

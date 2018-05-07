@@ -28,5 +28,6 @@ namespace UserApplicationSystem.Services.Entities
         public virtual DbSet<UAS_Applicants> UAS_Applicants { get; set; }
         public virtual DbSet<UAS_Household_Members> UAS_Household_Members { get; set; }
         public virtual DbSet<UAS_User_Details> UAS_User_Details { get; set; }
+        public virtual DbSet<UAS_Family_Relations> UAS_Family_Relations { get; set; }
     }
 }

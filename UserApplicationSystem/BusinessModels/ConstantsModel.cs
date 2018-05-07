@@ -11,5 +11,6 @@ namespace UserApplicationSystem.BusinessModels
         public const String EmailValidationError = "Please enter valid email address";
         public const String PasswordMinLengthError = "Password should be atleast 6 characters long";
         public const String PasswordsDonotMatchError = "Passwords do not match";
+        public const String SuccessMessage = "Success";
     }
 }

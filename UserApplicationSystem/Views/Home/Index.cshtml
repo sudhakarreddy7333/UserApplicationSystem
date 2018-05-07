@@ -3,7 +3,15 @@
 <div style="margin :0px auto;text-align: center;line-height: 50px">
     <input  type="button" class="btn btn-success" onclick="location.href='@Url.Action("CreateApplication","home")'" name="CreateApplication" value="Create Application" />
     <br />
-    <input type="button" class="btn btn-success" onclick="location.href='@Url.Action("SearchApplication","home")'" name="SearchApplication" value="Search Application" />
+    <input id="SerachApp" data-usertype="@ViewBag.LoggedInAs" type="button" class="btn btn-success" onclick="location.href='@Url.Action("SearchApplication","home")'" name="SearchApplication" value="Search Application" />
 </div>
    
 }
+<script>
+    onload = function () {
+        if ($("#SerachApp").data("usertype") == "User") {
+
+            document.getElementById("SerachApp").style.display = "none";
+        }
+    }
+</script>

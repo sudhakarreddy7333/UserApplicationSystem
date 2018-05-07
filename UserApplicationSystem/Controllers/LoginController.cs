@@ -10,7 +10,6 @@ namespace UserApplicationSystem.Controllers
 {
     public class LoginController : Controller
     {
-        // GET: Login
         [HttpGet]
         public ActionResult Index()
         {
@@ -21,17 +20,18 @@ namespace UserApplicationSystem.Controllers
         {
             if (ModelState.IsValid)
             {
-                UserAccessService.UserAccessServiceClient client = new UserAccessService.UserAccessServiceClient();
-                UserAccessData loginData = new UserAccessData();
-                loginData.UserName = loginDetails.UserName;
-                loginData.Password = loginDetails.Password;
-                if(client.AuthenticateUser(loginData).Message == "Success")
+                UserAccessServiceClient client = new UserAccessServiceClient();
+                UserAccessData retrievedResult = new UserAccessData();
+                var response = client.AuthenticateUser(new UserAccessData() {
+                    UserName = loginDetails.UserName,
+                    Password = loginDetails.Password
+                });
+                if (response.Message == ConstantsModel.SuccessMessage)
                 {
-                    return RedirectToAction("index", "home");
+                    retrievedResult = response.Data;
+                    return RedirectToAction("index", "home", new { loggedIn = retrievedResult.UserType.ToString() });
                 }
                 else return RedirectToAction("index", "login");
-
-
             }
             else
                 return RedirectToAction("index", "login");

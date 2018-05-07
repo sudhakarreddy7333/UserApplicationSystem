@@ -11,6 +11,6 @@ namespace UserApplicationSystem.Services.IRepository
     interface IUserAccessRepository
     {
         Task<UserAccessData> UserSignup(UserAccessData userDetails);
-        String UserLogin(UserAccessData loginDetails);
+        UserAccessData UserLogin(UserAccessData loginDetails);
     }
 }

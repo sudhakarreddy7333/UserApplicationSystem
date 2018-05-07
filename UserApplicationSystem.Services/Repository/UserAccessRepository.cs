@@ -42,21 +42,21 @@ namespace UserApplicationSystem.Services.Repository
             }
         } 
 
-        public String UserLogin(UserAccessData userDetails)
+        public UserAccessData UserLogin(UserAccessData userDetails)
         {
             using (UAS_SystemEntities dbContext = new UAS_SystemEntities())
             {
-                //var query = from c in db.UAS_User_Details
-                //            where 
-                //            c.UserName == userDetails.UserName && c.Upassword == userDetails.Password
-                //            select
                 UAS_User_Details retrivedUser = dbContext.UAS_User_Details.SingleOrDefault(user => user.UserName == userDetails.UserName && user.Upassword == userDetails.Password);
                 if (retrivedUser != null)
                 {
-                    return "UserFound";
+                    return new UserAccessData(){
+                        UserId = retrivedUser.UserId,
+                        UserName = retrivedUser.UserName,
+                        UserType = retrivedUser.UserType
+                    };
                 }
                 else
-                    return "UserNotFound";
+                    return new UserAccessData(){ };
             }     
         }
     }

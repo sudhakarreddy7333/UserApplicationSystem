@@ -154,6 +154,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
+    <Compile Include="Connected Services\UserMemberService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\SignupController.cs" />
@@ -168,6 +173,12 @@
     <None Include="Connected Services\UserAccessService\configuration91.svcinfo" />
     <None Include="Connected Services\UserAccessService\configuration.svcinfo" />
     <None Include="Connected Services\UserAccessService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Connected Services\UserMemberService\configuration91.svcinfo" />
+    <None Include="Connected Services\UserMemberService\configuration.svcinfo" />
+    <None Include="Connected Services\UserMemberService\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
@@ -195,6 +206,10 @@
     <Content Include="Connected Services\UserAccessService\UserApplicationSystem.UserAccessService.ResponseMessageDataOfUserAccessDatajbgNRuBV.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
+    <None Include="Connected Services\UserMemberService\service.wsdl" />
+    <None Include="Connected Services\UserMemberService\service.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Properties\PublishProfiles\CustomProfile.pubxml" />
     <None Include="Properties\PublishProfiles\CustomProfile1.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
@@ -249,6 +264,7 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadataStorage Include="Connected Services\UserAccessService\" />
+    <WCFMetadataStorage Include="Connected Services\UserMemberService\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

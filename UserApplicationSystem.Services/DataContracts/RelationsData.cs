@@ -8,17 +8,18 @@ using System.Threading.Tasks;
 namespace UserApplicationSystem.Services.DataContracts
 {
     [DataContract]
-    public class UserAccessData
+    public class RelationsData
     {
         [DataMember]
-        public String UserName { get; set; }
+        public int RelativeId { get; set; }
+
         [DataMember]
-        public String Email { get; set; }
+        public String RelativeName { get; set; }
+
         [DataMember]
-        public String Password { get; set; }
+        public String RelationType { get; set; }
+
         [DataMember]
-        public String UserType { get; set; }
-        [DataMember]
-        public int UserId { get; set; }
+        public String ReverseRelationType { get; set; }
     }
 }

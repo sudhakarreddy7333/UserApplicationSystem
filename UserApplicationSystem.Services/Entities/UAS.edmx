@@ -13,6 +13,16 @@
           <Property Name="UserId" Type="int" />
           <Property Name="AppStatus" Type="varchar" MaxLength="10" Nullable="false" />
         </EntityType>
+        <EntityType Name="UAS_Family_Relations">
+          <Key>
+            <PropertyRef Name="RelationId" />
+          </Key>
+          <Property Name="RelationId" Type="int" Nullable="false" />
+          <Property Name="HId" Type="int" />
+          <Property Name="RelativeName" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="RelationType" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="ReverseRelationType" Type="varchar" MaxLength="10" />
+        </EntityType>
         <EntityType Name="UAS_Household_Members">
           <Key>
             <PropertyRef Name="HId" />
@@ -37,6 +47,18 @@
           <Property Name="Upassword" Type="varchar" MaxLength="256" Nullable="false" />
           <Property Name="UserType" Type="char" MaxLength="10" Nullable="false" />
         </EntityType>
+        <Association Name="FK_MemberId">
+          <End Role="UAS_Household_Members" Type="Self.UAS_Household_Members" Multiplicity="0..1" />
+          <End Role="UAS_Family_Relations" Type="Self.UAS_Family_Relations" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UAS_Household_Members">
+              <PropertyRef Name="HId" />
+            </Principal>
+            <Dependent Role="UAS_Family_Relations">
+              <PropertyRef Name="HId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_UserAppId">
           <End Role="UAS_User_Details" Type="Self.UAS_User_Details" Multiplicity="0..1" />
           <End Role="UAS_Household_Members" Type="Self.UAS_Household_Members" Multiplicity="*" />
@@ -63,8 +85,13 @@
         </Association>
         <EntityContainer Name="UAS_SystemModelStoreContainer">
           <EntitySet Name="UAS_Applicants" EntityType="Self.UAS_Applicants" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UAS_Family_Relations" EntityType="Self.UAS_Family_Relations" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="UAS_Household_Members" EntityType="Self.UAS_Household_Members" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="UAS_User_Details" EntityType="Self.UAS_User_Details" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_MemberId" Association="Self.FK_MemberId">
+            <End Role="UAS_Household_Members" EntitySet="UAS_Household_Members" />
+            <End Role="UAS_Family_Relations" EntitySet="UAS_Family_Relations" />
+          </AssociationSet>
           <AssociationSet Name="FK_UserAppId" Association="Self.FK_UserAppId">
             <End Role="UAS_User_Details" EntitySet="UAS_User_Details" />
             <End Role="UAS_Household_Members" EntitySet="UAS_Household_Members" />
@@ -101,6 +128,7 @@
           <Property Name="Dob" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="Relation" Type="String" MaxLength="20" FixedLength="true" Unicode="false" Nullable="false" />
           <NavigationProperty Name="UAS_User_Details" Relationship="Self.FK_UserAppId" FromRole="UAS_Household_Members" ToRole="UAS_User_Details" />
+          <NavigationProperty Name="UAS_Family_Relations" Relationship="UAS_SystemModel.FK_MemberId" FromRole="UAS_Household_Members" ToRole="UAS_Family_Relations" />
         </EntityType>
         <EntityType Name="UAS_User_Details">
           <Key>
@@ -150,7 +178,35 @@
             <End Role="UAS_User_Details" EntitySet="UAS_User_Details" />
             <End Role="UAS_Household_Members" EntitySet="UAS_Household_Members" />
           </AssociationSet>
+          <EntitySet Name="UAS_Family_Relations" EntityType="UAS_SystemModel.UAS_Family_Relations" />
+          <AssociationSet Name="FK_MemberId" Association="UAS_SystemModel.FK_MemberId">
+            <End Role="UAS_Household_Members" EntitySet="UAS_Household_Members" />
+            <End Role="UAS_Family_Relations" EntitySet="UAS_Family_Relations" />
+          </AssociationSet>
         </EntityContainer>
+        <EntityType Name="UAS_Family_Relations">
+          <Key>
+            <PropertyRef Name="RelationId" />
+          </Key>
+          <Property Name="RelationId" Type="Int32" Nullable="false" />
+          <Property Name="HId" Type="Int32" />
+          <Property Name="RelativeName" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="RelationType" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="ReverseRelationType" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="UAS_Household_Members" Relationship="UAS_SystemModel.FK_MemberId" FromRole="UAS_Family_Relations" ToRole="UAS_Household_Members" />
+        </EntityType>
+        <Association Name="FK_MemberId">
+          <End Type="UAS_SystemModel.UAS_Household_Members" Role="UAS_Household_Members" Multiplicity="0..1" />
+          <End Type="UAS_SystemModel.UAS_Family_Relations" Role="UAS_Family_Relations" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UAS_Household_Members">
+              <PropertyRef Name="HId" />
+            </Principal>
+            <Dependent Role="UAS_Family_Relations">
+              <PropertyRef Name="HId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -189,6 +245,17 @@
                 <ScalarProperty Name="Email" ColumnName="Email" />
                 <ScalarProperty Name="Upassword" ColumnName="Upassword" />
                 <ScalarProperty Name="UserType" ColumnName="UserType" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UAS_Family_Relations">
+            <EntityTypeMapping TypeName="UAS_SystemModel.UAS_Family_Relations">
+              <MappingFragment StoreEntitySet="UAS_Family_Relations">
+                <ScalarProperty Name="ReverseRelationType" ColumnName="ReverseRelationType" />
+                <ScalarProperty Name="RelationType" ColumnName="RelationType" />
+                <ScalarProperty Name="RelativeName" ColumnName="RelativeName" />
+                <ScalarProperty Name="HId" ColumnName="HId" />
+                <ScalarProperty Name="RelationId" ColumnName="RelationId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
