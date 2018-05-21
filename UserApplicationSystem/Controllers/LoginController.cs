@@ -29,7 +29,7 @@ namespace UserApplicationSystem.Controllers
                 if (response.Message == ConstantsModel.SuccessMessage)
                 {
                     retrievedResult = response.Data;
-                    return RedirectToAction("index", "home", new { loggedIn = retrievedResult.UserType.ToString() });
+                    return RedirectToAction("index", "home", new { loggedIn = retrievedResult.UserType.ToString() , userId = retrievedResult.UserId});
                 }
                 else return RedirectToAction("index", "login");
             }

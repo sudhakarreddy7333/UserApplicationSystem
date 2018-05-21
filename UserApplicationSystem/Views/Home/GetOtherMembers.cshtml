@@ -13,6 +13,7 @@
     @Html.HiddenFor(model => model.Dob);
     @Html.HiddenFor(model => model.Suffix);
     @Html.HiddenFor(model => model.Email);
+    @Html.HiddenFor(model => model.UserId);
     for (var i = 0; i < Model.RelationsList.Count(); i++)
     {
         <div class="form-group">

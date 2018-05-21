@@ -8,14 +8,14 @@ namespace UserApplicationSystem.BusinessModels
     public class UserFamilyModel
     {
         [Required]
-        [StringLength(32,ErrorMessage ="Firstname cannot be more than 32 characters")]
+        [StringLength(10,ErrorMessage ="Firstname cannot be more than 10 characters")]
         public String FirstName { get; set; }
 
         [Required]
-        [StringLength(32, ErrorMessage = "lastname cannot be more than 32 characters")]
+        [StringLength(10, ErrorMessage = "lastname cannot be more than 10 characters")]
         public String LastName { get; set; }
 
-        [StringLength(32, ErrorMessage = "Middle cannot be more than 32 characters")]
+        [StringLength(10, ErrorMessage = "Middle cannot be more than 10 characters")]
         public String MiddleName { get; set; }
 
         public String Suffix { get; set; }

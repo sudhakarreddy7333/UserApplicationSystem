@@ -88,9 +88,10 @@
         </div>
     </div>
     <div>
+        @Html.HiddenFor(model => model.UserId);
         <input name="submit" id="SaveAndExitBtn" type="submit" value="Save and Exit" class="btn btn-success" />
         <div class="pull-right">
-            @Html.ActionLink("Back","Index","Home", new { @class = "btn btn-success" })
+            @Html.ActionLink("Back", "Index", "Home", new { @class = "btn btn-success" })
             <input name="submit" id="NextBtn" type="submit" value="Next" class="btn btn-success" />
         </div>
     </div>

@@ -28,7 +28,6 @@ namespace UserApplicationSystem.Services.Entities
         public string Suffix { get; set; }
         public string Gender { get; set; }
         public System.DateTime Dob { get; set; }
-        public string Relation { get; set; }
     
         public virtual UAS_User_Details UAS_User_Details { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

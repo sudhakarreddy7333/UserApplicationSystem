@@ -7,9 +7,8 @@ namespace UserApplicationSystem.BusinessModels
 {
     public class ApplicantModel
     {
-        public String AplicantId { get; set; }
+        public int AplicantId { get; set; }
         public String UserId { get; set; }
-
         public String Status { get; set; }
     }
 }

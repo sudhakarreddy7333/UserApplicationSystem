@@ -3,24 +3,45 @@
   <wsdl:types>
     <xsd:schema targetNamespace="http://tempuri.org/Imports">
       <xsd:import namespace="http://tempuri.org/" />
+      <xsd:import namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import namespace="http://schemas.datacontract.org/2004/07/UserApplicationSystem.Services.DataContracts" />
     </xsd:schema>
   </wsdl:types>
-  <wsdl:message name="IUserMembersService_DoWork_InputMessage">
-    <wsdl:part name="parameters" element="tns:DoWork" />
+  <wsdl:message name="IUserMembersService_AddMember_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddMember" />
   </wsdl:message>
-  <wsdl:message name="IUserMembersService_DoWork_OutputMessage">
-    <wsdl:part name="parameters" element="tns:DoWorkResponse" />
+  <wsdl:message name="IUserMembersService_AddMember_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddMemberResponse" />
+  </wsdl:message>
+  <wsdl:message name="IUserMembersService_GetMembers_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetMembers" />
+  </wsdl:message>
+  <wsdl:message name="IUserMembersService_GetMembers_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetMembersResponse" />
   </wsdl:message>
   <wsdl:portType name="IUserMembersService">
-    <wsdl:operation name="DoWork">
-      <wsdl:input wsaw:Action="http://tempuri.org/IUserMembersService/DoWork" message="tns:IUserMembersService_DoWork_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IUserMembersService/DoWorkResponse" message="tns:IUserMembersService_DoWork_OutputMessage" />
+    <wsdl:operation name="AddMember">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUserMembersService/AddMember" message="tns:IUserMembersService_AddMember_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUserMembersService/AddMemberResponse" message="tns:IUserMembersService_AddMember_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetMembers">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUserMembersService/GetMembers" message="tns:IUserMembersService_GetMembers_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUserMembersService/GetMembersResponse" message="tns:IUserMembersService_GetMembers_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IUserMembersService" type="tns:IUserMembersService">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
-    <wsdl:operation name="DoWork">
-      <soap:operation soapAction="http://tempuri.org/IUserMembersService/DoWork" style="document" />
+    <wsdl:operation name="AddMember">
+      <soap:operation soapAction="http://tempuri.org/IUserMembersService/AddMember" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMembers">
+      <soap:operation soapAction="http://tempuri.org/IUserMembersService/GetMembers" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

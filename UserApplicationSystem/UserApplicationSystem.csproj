@@ -149,6 +149,11 @@
     <Compile Include="BusinessModels\RelationsModel.cs" />
     <Compile Include="BusinessModels\UserFamilyModel.cs" />
     <Compile Include="BusinessModels\UserModel.cs" />
+    <Compile Include="Connected Services\UserApplicationService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
     <Compile Include="Connected Services\UserAccessService\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -170,15 +175,34 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Connected Services\UserApplicationService\service.wsdl" />
+    <None Include="Connected Services\UserApplicationService\service.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\UserApplicationService\service1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\UserApplicationService\UserApplicationSystem.Services.DataContracts.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Connected Services\UserAccessService\configuration91.svcinfo" />
     <None Include="Connected Services\UserAccessService\configuration.svcinfo" />
     <None Include="Connected Services\UserAccessService\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
+    <Content Include="Connected Services\UserApplicationService\UserApplicationSystem.UserApplicationService.ResponseMessageDataOfUserApplicationDatajbgNRuBV.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
     <None Include="Connected Services\UserMemberService\configuration91.svcinfo" />
     <None Include="Connected Services\UserMemberService\configuration.svcinfo" />
     <None Include="Connected Services\UserMemberService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Connected Services\UserApplicationService\configuration91.svcinfo" />
+    <None Include="Connected Services\UserApplicationService\configuration.svcinfo" />
+    <None Include="Connected Services\UserApplicationService\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
@@ -210,6 +234,18 @@
     <None Include="Connected Services\UserMemberService\service.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Connected Services\UserMemberService\service1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\UserMemberService\UserApplicationSystem.Services.DataContracts.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <Content Include="Connected Services\UserMemberService\UserApplicationSystem.UserMemberService.ResponseMessageDataOfArrayOfUserMembersDatajbgNRuBV.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\UserMemberService\UserApplicationSystem.UserMemberService.ResponseMessageDataOfUserMembersDatajbgNRuBV.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
     <None Include="Properties\PublishProfiles\CustomProfile.pubxml" />
     <None Include="Properties\PublishProfiles\CustomProfile1.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
@@ -240,10 +276,10 @@
     <Content Include="Views\Home\CreateApplication.cshtml" />
     <Content Include="Views\Home\Relationships.cshtml" />
     <Content Include="Views\Home\GetOtherMembers.cshtml" />
+    <Content Include="Views\Home\UserApplication.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="BuildOutput\" />
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
@@ -263,6 +299,7 @@
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <ItemGroup>
+    <WCFMetadataStorage Include="Connected Services\UserApplicationService\" />
     <WCFMetadataStorage Include="Connected Services\UserAccessService\" />
     <WCFMetadataStorage Include="Connected Services\UserMemberService\" />
   </ItemGroup>

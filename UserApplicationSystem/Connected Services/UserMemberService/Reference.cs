@@ -9,17 +9,433 @@
 //------------------------------------------------------------------------------
 
 namespace UserApplicationSystem.UserMemberService {
+    using System.Runtime.Serialization;
+    using System;
     
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="UserMembersData", Namespace="http://schemas.datacontract.org/2004/07/UserApplicationSystem.Services.DataContra" +
+        "cts")]
+    [System.SerializableAttribute()]
+    public partial class UserMembersData : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.DateTime DobField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string EmailField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string FirstNameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string GenderField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string LastNameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int MemberIdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string MiddleNameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private UserApplicationSystem.UserMemberService.RelationsData[] RelationsListField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string SuffixField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int UserIdField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.DateTime Dob {
+            get {
+                return this.DobField;
+            }
+            set {
+                if ((this.DobField.Equals(value) != true)) {
+                    this.DobField = value;
+                    this.RaisePropertyChanged("Dob");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Email {
+            get {
+                return this.EmailField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.EmailField, value) != true)) {
+                    this.EmailField = value;
+                    this.RaisePropertyChanged("Email");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string FirstName {
+            get {
+                return this.FirstNameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.FirstNameField, value) != true)) {
+                    this.FirstNameField = value;
+                    this.RaisePropertyChanged("FirstName");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Gender {
+            get {
+                return this.GenderField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.GenderField, value) != true)) {
+                    this.GenderField = value;
+                    this.RaisePropertyChanged("Gender");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string LastName {
+            get {
+                return this.LastNameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.LastNameField, value) != true)) {
+                    this.LastNameField = value;
+                    this.RaisePropertyChanged("LastName");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int MemberId {
+            get {
+                return this.MemberIdField;
+            }
+            set {
+                if ((this.MemberIdField.Equals(value) != true)) {
+                    this.MemberIdField = value;
+                    this.RaisePropertyChanged("MemberId");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string MiddleName {
+            get {
+                return this.MiddleNameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.MiddleNameField, value) != true)) {
+                    this.MiddleNameField = value;
+                    this.RaisePropertyChanged("MiddleName");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public UserApplicationSystem.UserMemberService.RelationsData[] RelationsList {
+            get {
+                return this.RelationsListField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.RelationsListField, value) != true)) {
+                    this.RelationsListField = value;
+                    this.RaisePropertyChanged("RelationsList");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Suffix {
+            get {
+                return this.SuffixField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.SuffixField, value) != true)) {
+                    this.SuffixField = value;
+                    this.RaisePropertyChanged("Suffix");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int UserId {
+            get {
+                return this.UserIdField;
+            }
+            set {
+                if ((this.UserIdField.Equals(value) != true)) {
+                    this.UserIdField = value;
+                    this.RaisePropertyChanged("UserId");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="RelationsData", Namespace="http://schemas.datacontract.org/2004/07/UserApplicationSystem.Services.DataContra" +
+        "cts")]
+    [System.SerializableAttribute()]
+    public partial class RelationsData : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string RelationTypeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int RelativeIdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string RelativeNameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ReverseRelationTypeField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string RelationType {
+            get {
+                return this.RelationTypeField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.RelationTypeField, value) != true)) {
+                    this.RelationTypeField = value;
+                    this.RaisePropertyChanged("RelationType");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int RelativeId {
+            get {
+                return this.RelativeIdField;
+            }
+            set {
+                if ((this.RelativeIdField.Equals(value) != true)) {
+                    this.RelativeIdField = value;
+                    this.RaisePropertyChanged("RelativeId");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string RelativeName {
+            get {
+                return this.RelativeNameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.RelativeNameField, value) != true)) {
+                    this.RelativeNameField = value;
+                    this.RaisePropertyChanged("RelativeName");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string ReverseRelationType {
+            get {
+                return this.ReverseRelationTypeField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ReverseRelationTypeField, value) != true)) {
+                    this.ReverseRelationTypeField = value;
+                    this.RaisePropertyChanged("ReverseRelationType");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="ResponseMessageDataOfUserMembersDatajbgNRuBV", Namespace="http://schemas.datacontract.org/2004/07/UserApplicationSystem.Services.DataContra" +
+        "cts")]
+    [System.SerializableAttribute()]
+    public partial class ResponseMessageDataOfUserMembersDatajbgNRuBV : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private UserApplicationSystem.UserMemberService.UserMembersData DataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string MessageField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public UserApplicationSystem.UserMemberService.UserMembersData Data {
+            get {
+                return this.DataField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.DataField, value) != true)) {
+                    this.DataField = value;
+                    this.RaisePropertyChanged("Data");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Message {
+            get {
+                return this.MessageField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.MessageField, value) != true)) {
+                    this.MessageField = value;
+                    this.RaisePropertyChanged("Message");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="ResponseMessageDataOfArrayOfUserMembersDatajbgNRuBV", Namespace="http://schemas.datacontract.org/2004/07/UserApplicationSystem.Services.DataContra" +
+        "cts")]
+    [System.SerializableAttribute()]
+    public partial class ResponseMessageDataOfArrayOfUserMembersDatajbgNRuBV : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private UserApplicationSystem.UserMemberService.UserMembersData[] DataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string MessageField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public UserApplicationSystem.UserMemberService.UserMembersData[] Data {
+            get {
+                return this.DataField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.DataField, value) != true)) {
+                    this.DataField = value;
+                    this.RaisePropertyChanged("Data");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Message {
+            get {
+                return this.MessageField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.MessageField, value) != true)) {
+                    this.MessageField = value;
+                    this.RaisePropertyChanged("Message");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="UserMemberService.IUserMembersService")]
     public interface IUserMembersService {
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserMembersService/DoWork", ReplyAction="http://tempuri.org/IUserMembersService/DoWorkResponse")]
-        void DoWork();
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserMembersService/AddMember", ReplyAction="http://tempuri.org/IUserMembersService/AddMemberResponse")]
+        UserApplicationSystem.UserMemberService.ResponseMessageDataOfUserMembersDatajbgNRuBV AddMember(UserApplicationSystem.UserMemberService.UserMembersData member);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserMembersService/DoWork", ReplyAction="http://tempuri.org/IUserMembersService/DoWorkResponse")]
-        System.Threading.Tasks.Task DoWorkAsync();
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserMembersService/AddMember", ReplyAction="http://tempuri.org/IUserMembersService/AddMemberResponse")]
+        System.Threading.Tasks.Task<UserApplicationSystem.UserMemberService.ResponseMessageDataOfUserMembersDatajbgNRuBV> AddMemberAsync(UserApplicationSystem.UserMemberService.UserMembersData member);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserMembersService/GetMembers", ReplyAction="http://tempuri.org/IUserMembersService/GetMembersResponse")]
+        UserApplicationSystem.UserMemberService.ResponseMessageDataOfArrayOfUserMembersDatajbgNRuBV GetMembers();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserMembersService/GetMembers", ReplyAction="http://tempuri.org/IUserMembersService/GetMembersResponse")]
+        System.Threading.Tasks.Task<UserApplicationSystem.UserMemberService.ResponseMessageDataOfArrayOfUserMembersDatajbgNRuBV> GetMembersAsync();
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -49,12 +465,20 @@ namespace UserApplicationSystem.UserMemberService {
                 base(binding, remoteAddress) {
         }
         
-        public void DoWork() {
-            base.Channel.DoWork();
+        public UserApplicationSystem.UserMemberService.ResponseMessageDataOfUserMembersDatajbgNRuBV AddMember(UserApplicationSystem.UserMemberService.UserMembersData member) {
+            return base.Channel.AddMember(member);
         }
         
-        public System.Threading.Tasks.Task DoWorkAsync() {
-            return base.Channel.DoWorkAsync();
+        public System.Threading.Tasks.Task<UserApplicationSystem.UserMemberService.ResponseMessageDataOfUserMembersDatajbgNRuBV> AddMemberAsync(UserApplicationSystem.UserMemberService.UserMembersData member) {
+            return base.Channel.AddMemberAsync(member);
+        }
+        
+        public UserApplicationSystem.UserMemberService.ResponseMessageDataOfArrayOfUserMembersDatajbgNRuBV GetMembers() {
+            return base.Channel.GetMembers();
+        }
+        
+        public System.Threading.Tasks.Task<UserApplicationSystem.UserMemberService.ResponseMessageDataOfArrayOfUserMembersDatajbgNRuBV> GetMembersAsync() {
+            return base.Channel.GetMembersAsync();
         }
     }
 }

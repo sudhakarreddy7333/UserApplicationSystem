@@ -1,0 +1,27 @@
+﻿@model UserApplicationSystem.BusinessModels.ApplicantModel
+
+<div>
+    <h4>Your Application is generated</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.Label("Application ID")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AplicantId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Status)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Status)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Back to List", "Index")
+</p>
