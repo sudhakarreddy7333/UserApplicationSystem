@@ -15,7 +15,8 @@ namespace UserApplicationSystem.Controllers
         // GET: Relations
         public ActionResult Index()
         {
-            return View();
+            FamilyMembers = (List<UserFamilyModel>)System.Web.HttpContext.Current.Session["NewMembers"];
+            return View(FamilyMembers);
         }
 
         [HttpPost]
@@ -60,7 +61,7 @@ namespace UserApplicationSystem.Controllers
             if (responseFromClient.Message == "Success")
             {
                 TempData["NewApplication"] = relations.UserId;
-                return RedirectToAction("UserApplication");
+                return RedirectToAction("index","UserApplication");
             }
 
 

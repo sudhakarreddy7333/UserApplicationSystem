@@ -1,7 +1,8 @@
-﻿@model UserApplicationSystem.BusinessModels.UserFamilyModel
+﻿
+@model UserApplicationSystem.BusinessModels.UserFamilyModel
 
 
-@using (Html.BeginForm("MemberRelations", "Home", null, FormMethod.Post))
+@using (Html.BeginForm("MemberRelations", "Relations", null, FormMethod.Post))
 {
     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
     @Html.Label(Model.FirstName)<label>'s Relationship</label>

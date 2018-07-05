@@ -52,7 +52,7 @@ namespace UserApplicationSystem.Controllers
             else if (submit == "Next")
             {
                 FamilyMembers = (List<UserFamilyModel>)System.Web.HttpContext.Current.Session["NewMembers"];
-                return View("Relationships", FamilyMembers);
+                return RedirectToAction("index","Relations");
             }
             else
                 return View();

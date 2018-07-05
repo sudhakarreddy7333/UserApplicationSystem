@@ -13,13 +13,19 @@ namespace UserApplicationSystem.Controllers
         // GET: UserApplication
         public ActionResult Index()
         {
-            UserApplicationData applicationData = GenerateApplicationToken((int)TempData["NewApplication"]);
-            ApplicantModel appModel = new ApplicantModel()
+            int userId;
+            if (TempData.ContainsKey("NewApplication"))
             {
-                AplicantId = applicationData.ApplicationId,
-                Status = applicationData.ApplicationStatus
-            };
-            return View(appModel);
+                userId = (int)TempData["NewApplication"];
+                UserApplicationData applicationData = GenerateApplicationToken(userId);
+                ApplicantModel appModel = new ApplicantModel()
+                {
+                    AplicantId = applicationData.ApplicationId,
+                    Status = applicationData.ApplicationStatus
+                };
+                return View(appModel);
+            }
+            return View();
         }
 
         private UserApplicationData GenerateApplicationToken(int userId)
