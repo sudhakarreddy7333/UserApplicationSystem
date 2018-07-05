@@ -164,9 +164,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
+    <Compile Include="Controllers\CreateApplicationController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\RelationsController.cs" />
     <Compile Include="Controllers\SignupController.cs" />
+    <Compile Include="Controllers\UserApplicationController.cs" />
     <Compile Include="Filters\ActionSessionStateAttribute.cs" />
     <Compile Include="Filters\CustomControllerFactory.cs" />
     <Compile Include="Global.asax.cs">
@@ -277,10 +280,13 @@
     <Content Include="Views\Home\Relationships.cshtml" />
     <Content Include="Views\Home\GetOtherMembers.cshtml" />
     <Content Include="Views\Home\UserApplication.cshtml" />
+    <Content Include="Views\CreateApplication\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Models\" />
+    <Folder Include="Views\Relations\" />
+    <Folder Include="Views\UserApplication\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

@@ -16,7 +16,7 @@ namespace UserApplicationSystem.Controllers
             return View();
         }
         [HttpPost]
-        public RedirectToRouteResult Index(LoginUserModel loginDetails)
+        public ActionResult Index(LoginUserModel loginDetails)
         {
             if (ModelState.IsValid)
             {
@@ -31,6 +31,12 @@ namespace UserApplicationSystem.Controllers
                     retrievedResult = response.Data;
                     return RedirectToAction("index", "home", new { loggedIn = retrievedResult.UserType.ToString() , userId = retrievedResult.UserId});
                 }
+                if (response.Message == "NoUserFound")
+                {
+                    ViewBag.ErrorMessage = "Incorrect username or passoword";
+                    return View();
+                }
+                
                 else return RedirectToAction("index", "login");
             }
             else

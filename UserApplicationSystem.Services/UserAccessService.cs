@@ -21,7 +21,7 @@ namespace UserApplicationSystem.Services
             if(loginInfo != null)
             {
                 UserAccessData result = userRepo.UserLogin(loginInfo);
-                if(result != null)
+                if(result.UserName != null)
                 {
                     response = new ResponseMessageData<UserAccessData>()
                     {
