@@ -172,6 +172,7 @@
     <Compile Include="Controllers\UserApplicationController.cs" />
     <Compile Include="Filters\ActionSessionStateAttribute.cs" />
     <Compile Include="Filters\CustomControllerFactory.cs" />
+    <Compile Include="Filters\HttpParamAttribute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>

@@ -5,14 +5,15 @@
 }
 
 <h2>Create Application</h2>
+<h3 style="color: green;background: greenyellow;padding: 15px;display:@ViewBag.DisplayStatusMsg">@ViewBag.StatusMessage</h3>
 <span class="pull-right mandatory">* Required fields</span>
 
 
-@using (Html.BeginForm("StoreNewApplication", "CreateApplication", null, FormMethod.Post))
+@using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-
-    <div class="form-horizontal">
+<h2>
+</h2><div class="form-horizontal">
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
@@ -84,7 +85,7 @@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input name="submit" id="AddMemberBtn" type="submit" value="Add Member" class="btn btn-success pull-right" />
+                <input name="StoreNewApplication" id="AddMemberBtn" type="submit" value="Add Member" class="btn btn-success pull-right" />
             </div>
         </div>
         <div>
@@ -92,7 +93,7 @@
             <input name="submit" id="SaveAndExitBtn" type="submit" value="Save and Exit" class="btn btn-success" />
             <div class="pull-right">
                 @Html.ActionLink("Back", "Index", "Home", new { @class = "btn btn-success" })
-                <input name="submit" id="NextBtn" type="submit" value="Next" class="btn btn-success" />
+                <input name="CreateAppNextBtn_Click" id="NextBtn" type="submit" value="Next" class="btn btn-success" />
             </div>
         </div>
     </div>

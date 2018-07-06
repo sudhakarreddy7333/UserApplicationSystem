@@ -34,5 +34,7 @@ namespace UserApplicationSystem.BusinessModels
         public int MemberId { get; set; }
 
         public List<RelationsModel> RelationsList { get; set; }
+
+        public String StatusMessage { get; set; }
     }
 }

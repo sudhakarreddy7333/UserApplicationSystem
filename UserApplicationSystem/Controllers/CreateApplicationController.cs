@@ -10,16 +10,12 @@ namespace UserApplicationSystem.Controllers
 {
     public class CreateApplicationController : Controller
     {
+        #region
         public UserFamilyModel FamilyMember { get; set; } = new UserFamilyModel();
-        public List<UserFamilyModel> MemberObjs
-        {
-            get
-            {
-                return (Session["NewMembers"] as List<UserFamilyModel>) ?? new List<UserFamilyModel>();
-            }
-        }
-
+        List<UserFamilyModel> listOfmembers = new List<UserFamilyModel>();
         public List<UserFamilyModel> FamilyMembers { get; private set; }
+
+        #endregion
 
         [HttpGet]
         public ActionResult Index()
@@ -28,34 +24,47 @@ namespace UserApplicationSystem.Controllers
             {
                 FamilyMember.UserId = (int)TempData["UserId"];
             }
+            ViewBag.DisplayStatusMsg = "none";
             return View(FamilyMember);
         }
 
-        [HttpPost]
+        [HttpParam]
         [ActionSessionState(System.Web.SessionState.SessionStateBehavior.Required)]
-        public ActionResult StoreNewApplication(String submit, UserFamilyModel member)
+        public ActionResult StoreNewApplication(UserFamilyModel member)
         {
-            if (submit == "Add Member")
+            if (ModelState.IsValid)
             {
-                if (ModelState.IsValid)
+                member.MemberId = new Random().Next(10000);
+                if (Session["NewMembers"] != null)
                 {
-                    member.MemberId = new Random().Next(10000);
-                    MemberObjs.Add(member);
-                    Session["NewMembers"] = MemberObjs;
+                    listOfmembers = (List<UserFamilyModel>)System.Web.HttpContext.Current.Session["NewMembers"];
+                    listOfmembers.Add(member);
                 }
-                return View("index");
+                else
+                {
+                    listOfmembers.Add(member);
+                }
+                System.Web.HttpContext.Current.Session["NewMembers"] = listOfmembers;
+                ViewBag.StatusMessage = listOfmembers.Count+" Member(s) added";
+                ViewBag.DisplayStatusMsg = "block";
+                member = new UserFamilyModel();
+                return View("index", member);
             }
-            else if (submit == "Save and Exit")
+           
+            return View("index", member);
+        }
+        [HttpParam]
+        public ActionResult CreateAppNextBtn_Click()
+        {
+            FamilyMembers = (List<UserFamilyModel>)System.Web.HttpContext.Current.Session["NewMembers"];
+            if (FamilyMembers.Count > 0)
             {
-                return View("index");
-            }
-            else if (submit == "Next")
-            {
-                FamilyMembers = (List<UserFamilyModel>)System.Web.HttpContext.Current.Session["NewMembers"];
-                return RedirectToAction("index","Relations");
+                return RedirectToAction("index", "Relations");
             }
             else
-                return View();
+            {
+                return RedirectToAction("index");
+            }
         }
     }
 }
